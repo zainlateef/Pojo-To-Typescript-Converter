@@ -1,0 +1,42 @@
+id : number;
+
+appAlias : string;
+
+name : string;
+
+alias : string;
+
+rootApp : string;
+
+path : string;
+
+order : number;
+
+icon : string;
+
+externalNav : boolean = false;
+
+children : Array<Navigation>;
+
+groups : Array<string>;
+
+id : number;
+
+name : string;
+
+alias : string;
+
+url : string;
+
+categoryName : string;
+
+pages : Array<Page>;
+
+restrictedPages : Array<Page>;
+
+favoriteId : number;
+
+active : boolean = false;
+
+groups : Array<string>;
+

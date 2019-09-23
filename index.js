@@ -5,7 +5,13 @@ intializeKeywords();
 var textToConvert = fs.readFileSync('target.txt', 'utf8');
 var linesOfText = textToConvert.split('\n');
 linesOfText = processLines(linesOfText);
-linesOfText.forEach(line => console.log(convertLineToTypescript(line)+'\n'));
+let result = '';
+linesOfText.forEach(line => result += convertLineToTypescript(line) + '\n');
+let test = fs.readFileSync('test.txt','utf8');
+if(test===result)
+    console.log("PASS")
+else
+    console.log("FAIL")
 
 function convertLineToTypescript(line) {
     let words = line.split(' ');
@@ -38,15 +44,17 @@ function arrayProtocol(name, arrayType){
 
 function generateTypescriptDeclaration(name,type,value) {
     if(!value)
-        return name + " : " + type  + ";";
+        return name + " : " + type  + ";\n";
     else
-    return name + " : " + type  + " = " + value + ";";
+    return name + " : " + type  + " = " + value + ";\n";
 }
 
 function processLines(lines){
     lines.forEach( (line, index) => lines[index] = line.replace(/[\t\n\r]/gm,'').trim() );
-    lines = lines.filter(line => line !== '');
-    lines = lines.filter(line => line[0] != '@');
+    lines = lines.filter( line => 
+        line !== '' && 
+        line[0] != '@'
+    );
     return lines;
 }
 
