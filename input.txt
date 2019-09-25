@@ -1,0 +1,44 @@
+  private Long id;
+  private String appAlias;
+  private String name;
+  private String alias;
+  private String rootApp;
+  private String path;
+  private Integer order;
+  private String icon;
+  private boolean externalNav = false;
+  private List<NavigationDto> children = new ArrayList<NavigationDto>();
+  private List<String> groups = new ArrayList<String>();
+
+  	private Long id;
+	
+	@NotNull
+	@Size(min=1, max=50)
+
+
+
+	
+	private String name;
+	
+	//Dummy comment
+	@NotNull
+	@Size(min=1, max=100)
+	private String alias;
+	
+	@NotNull
+	@Size(min=1, max=500)
+	private String url;
+	
+	@NotNull
+	private String categoryName;
+	
+	private List<PageDto> pages = new ArrayList<PageDto>();
+	
+	@Valid
+	private List<PageDto> restrictedPages = new ArrayList<PageDto>();
+	
+	private Long favoriteId;
+	private boolean active = false;
+	private List<String> groups = new ArrayList<String>();
+
+	private PageDTO page = new PageDTO();
