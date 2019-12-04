@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var modifiers, types 
+var modifiers, javaToTypescriptCodex
 intializeKeywords();
 var textToConvert = fs.readFileSync('input.txt', 'utf8');
 var linesOfText = textToConvert.split('\n');
@@ -13,7 +13,7 @@ console.log("Done");
 function convertLineToTypescript(line) {
     let words = line.split(' ');
     let name = (words[2]).replace(';','');
-    let type = types.get(words[1]);
+    let type = javaToTypescriptCodex.get(words[1]);
     if(!type) {
         if(words[1].includes("Array") || words[1].includes("List"))
             return arrayProtocol(name, words[1]);
@@ -34,7 +34,7 @@ function dtoProtocol(name, dtoType) {
 
 function arrayProtocol(name, arrayType){
     let type = arrayType.substring(arrayType.lastIndexOf("<") + 1, arrayType.lastIndexOf(">"));
-    let temp = types.get(type);
+    let temp = javaToTypescriptCodex.get(type);
     if(temp){
         type = temp;
         let arrayType = "Array<" + type + ">";
@@ -67,6 +67,6 @@ function processLines(lines){
 
 function intializeKeywords() {
     modifiers = new Map([["private", ""], ["public", ""], ["protected",""]]);
-    types = new Map([["Long", "number"], ["long", "number"], ["Integer", "number"], ["int","number"], 
-    ["Double", "number"], ["double", "number"], ["String", "string"], ["Boolean", "boolean"], ["boolean","boolean"]]);
+    javaToTypescriptCodex = new Map([["Long", "number"], ["long", "number"], ["Integer", "number"], ["int","number"],
+    ["Double", "number"], ["double", "number"], ["String", "string"], ["Boolean", "boolean"], ["boolean","boolean"], ["Date","Date"]]);
 }

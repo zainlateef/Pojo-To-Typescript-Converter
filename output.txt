@@ -1,0 +1,14 @@
+resortNumber : number;
+
+reservationNumber : number;
+
+otherReservationNumber : string;
+
+guestFirstName : string;
+
+guestLastName : string;
+
+arrival : Date;
+
+departure : Date;
+
